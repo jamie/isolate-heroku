@@ -4,9 +4,7 @@ contents of your Isolate file each time it is loaded.
 Recommended installation is:
 
   # Isolate
-  env :development do
-    gem "isolate-heroku"
-  end
+  gem "isolate-heroku"
 
   # early in your app loading cycle
   require "isolate/now"
