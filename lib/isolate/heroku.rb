@@ -1,4 +1,4 @@
-require 'isolate'
+require "isolate"
 
 unless ENV.keys.any? { |k| /^heroku/i =~ k }
   File.open ".gems", "wb" do |f|
