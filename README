@@ -14,3 +14,6 @@ Recommended installation is:
 
 Note that this plugin will only make changes to your local .gems file,
 you still need to commit it yourself.
+
+Original code blatantly stolen from Isolate's author, John Barnette.
+http://www.jbarnette.com/2010/06/26/isolate-on-heroku.html
