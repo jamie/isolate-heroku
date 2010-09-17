@@ -1,0 +1,16 @@
+This gem will rebuild your .gems file for Heroku to match the current
+contents of your Isolate file each time it is loaded.
+
+Recommended installation is:
+
+  # Isolate
+  env :development do
+    gem "isolate-heroku"
+  end
+
+  # early in your app loading cycle
+  require "isolate/now"
+  require "isolate/heroku"
+
+Note that this plugin will only make changes to your local .gems file,
+you still need to commit it yourself.
