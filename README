@@ -1,6 +1,11 @@
 This gem will rebuild your .gems file for Heroku to match the current
 contents of your Isolate file each time it is loaded.
 
+Note: Due to Aspen having an outdated version of RubyGems, Isolate
+      will only install cleanly on the Bamboo stacks. In theory, it
+      should be possible to only load Isolate if you're not running
+      under heroku, but it's probably easier just to migrate up.
+
 Recommended installation is:
 
   # Isolate
