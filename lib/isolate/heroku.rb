@@ -1,6 +1,9 @@
+require "digest/md5"
 require "isolate"
 
 unless ENV.keys.any? { |k| /^heroku/i =~ k }
+  digest = File.file?(".gems") && Digest::MD5.hexdigest(File.read ".gems")
+  
   File.open ".gems", "wb" do |f|
     f.puts "isolate --version '= #{Isolate::VERSION}'"
 
@@ -18,5 +21,7 @@ unless ENV.keys.any? { |k| /^heroku/i =~ k }
     end
   end
 
-  STDERR.puts "WARNING: isolate-heroku has modified .gems, please commit to git." if /\.gems/ =~ `git status`
+  unless digest == Digest::MD5.hexdigest(File.read ".gems")
+    warn ".gems has changed! Don't forget to commit it."
+  end
 end
