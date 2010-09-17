@@ -2,11 +2,9 @@ require 'isolate'
 
 unless ENV.keys.any? { |k| /^heroku/i =~ k }
   File.open ".gems", "wb" do |f|
-    entries = Isolate.sandbox.entries.sort_by { |e| e.name }
-
     f.puts "isolate --version '= #{Isolate::VERSION}'"
 
-    entries.each do |entry|
+    Isolate.sandbox.entries.each do |entry|
       next unless entry.matches? "production"
 
       gems  = [entry.name]
