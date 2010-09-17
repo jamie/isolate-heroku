@@ -7,14 +7,14 @@ unless ENV.keys.any? { |k| /^heroku/i =~ k }
     Isolate.sandbox.entries.each do |entry|
       next unless entry.matches? "production"
 
-      gems  = [entry.name]
-      gems << "--version '#{entry.requirement}'"
+      gem  = [entry.name]
+      gem << "--version '#{entry.requirement}'"
 
       if entry.options[:source]
-        gems << "--source #{entry.options[:source]}"
+        gem << "--source #{entry.options[:source]}"
       end
 
-      f.puts gems.join(" ")
+      f.puts gem.join(" ")
     end
   end
 
