@@ -1,6 +1,6 @@
 require 'isolate'
 
-if File.exist? ".gems"
+unless ENV.keys.any? { |k| /^heroku/i =~ k }
   File.open ".gems", "wb" do |f|
     entries = Isolate.sandbox.entries.sort_by { |e| e.name }
 
